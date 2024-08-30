@@ -14,15 +14,19 @@ let correctAnswers = 0; // Track the number of correct answers
 let gotCorrectAnswer = false; // Track if the user got at least one correct answer
 
 //function to shuffle the array of images
-function shuffleArray(array) {
-  for (let i = array.length - 1; i > 0; i--) {
+function shuffleArrays(imagesArray, wordsArray) {
+  for (let i = imagesArray.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
+    [imagesArray[i], imagesArray[j]] = [imagesArray[j], imagesArray[i]];
+    [wordsArray[i], wordsArray[j]] = [wordsArray[j], wordsArray[i]];
   }
 }
 
 
+
 function startGame() {
+  // Shuffle both arrays together to maintain the correct image-word pairs
+  shuffleArrays(images, words);
   
   generateAlphabetButtons();
   showImage();
