@@ -2,9 +2,11 @@
 let images = [
   'https://img.freepik.com/free-vector/flat-design-halloween-bat-concept_23-2148649699.jpg',
   'https://img.freepik.com/free-vector/cute-cat-cartoon-characters-illustrations-set-cats-with-heart-shaped-noses-happy-fluffy-kittens-smiling-orange-grey-kitties-sitting-white_74855-20523.jpg',
-  'https://img.freepik.com/free-vector/beagle-dog-cartoon-white-background_1308-68249.jpg'
+  'https://img.freepik.com/free-vector/beagle-dog-cartoon-white-background_1308-68249.jpg',
+  'https://img.freepik.com/free-vector/cow-smiling-cartoon-vector-illustration_96037-417.jpg?t=st=1725015018~exp=1725018618~hmac=c03776339cf9183e5094fc709d8cac2359f3014dd48a004b8177ceccf6e47a25&w=826',
+  'https://img.freepik.com/free-vector/hen-chicken-nest_1308-34737.jpg?t=st=1725015499~exp=1725019099~hmac=f785c988691f2f884fd88ad4aa18b03a328cf55bb03f8bb5acb3c911557ec7f6&w=740'
 ];
-let words = ['BAT', 'CAT', 'DOG']; // Corresponding words
+let words = ['BAT', 'CAT', 'DOG', 'COW', 'HEN']; // Corresponding words
 let currentIndex = 0;
 let currentWord = '';
 let timerInterval, imageTimeout;
