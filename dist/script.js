@@ -162,10 +162,13 @@ function nextImage() {
 function showResults() {
   // Determine the result message based on the number of correct answers
   let resultMessage = '';
-  if (correctAnswers === 3) {
+  
+  if (correctAnswers === 5) {
     resultMessage = "Excellent! 💃🏽💃🏽💃🏽";
-  } else if (correctAnswers === 2) {
+  } else if (correctAnswers === 3) {
     resultMessage = "Very Good! 👍🏽👍🏽";
+  } else if (correctAnswers === 2) {
+    resultMessage = "More room for improvement! Keep trying! 💪🏽💪🏽";
   } else if (correctAnswers === 1) {
     resultMessage = "More room for improvement! Keep trying! 💪🏽💪🏽";
   } else {
