@@ -13,19 +13,16 @@ let timerInterval, imageTimeout;
 let correctAnswers = 0; // Track the number of correct answers
 let gotCorrectAnswer = false; // Track if the user got at least one correct answer
 
-// //function to shuffle the array of images
-// function shuffleArray(array) {
-//   for (let i = array.length - 1; i > 0; i--) {
-//     const j = Math.floor(Math.random() * (i + 1));
-//     [array[i], array[j]] = [array[j], array[i]];
-//   }
-// }
+//function to shuffle the array of images
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+}
 
 
 function startGame() {
-  // Shuffle both arrays to ensure random order
-  shuffleArray(images);
-  // shuffleArray(words);
   
   generateAlphabetButtons();
   showImage();
@@ -161,20 +158,19 @@ function nextImage() {
 
 function showResults() {
   // Determine the result message based on the number of correct answers
-  let resultMessage = '';
+   let resultMessage = '';
   
-  if (correctAnswers === 5) {
-    resultMessage = "Excellent! 💃🏽💃🏽💃🏽";
-  } else if (correctAnswers === 3) {
-    resultMessage = "Very Good! 👍🏽👍🏽";
-  } else if (correctAnswers === 2) {
-    resultMessage = "More room for improvement! Keep trying! 💪🏽💪🏽";
-  } else if (correctAnswers === 1) {
-    resultMessage = "More room for improvement! Keep trying! 💪🏽💪🏽";
-  } else {
-    resultMessage = "Game Over! You didn't get any words correct 😭😭😭.";
-  }
-  
+   if (correctAnswers === 5) {
+     resultMessage = "Excellent! 💃🏽💃🏽💃🏽";
+   } else if (correctAnswers === 3) {
+     resultMessage = "Very Good! 👍🏽👍🏽";
+   } else if (correctAnswers === 2) {
+     resultMessage = "More room for improvement! Keep trying! 💪🏽💪🏽";
+   } else if (correctAnswers === 1) {
+     resultMessage = "More room for improvement! Keep trying! 💪🏽💪🏽";
+   } else {
+     resultMessage = "Game Over! You didn't get any words correct 😭😭😭.";
+   }
   // Create a div element to hold the modal
   let modalDiv = document.createElement('div');
   modalDiv.innerHTML = `
