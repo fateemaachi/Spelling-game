@@ -27,7 +27,7 @@ function shuffleArrays(imagesArray, wordsArray) {
 function startGame() {
   // Shuffle both arrays together to maintain the correct image-word pairs
   shuffleArrays(images, words);
-  
+
   generateAlphabetButtons();
   showImage();
 }
@@ -137,34 +137,12 @@ function nextImage() {
   }
 }
 
-// function showResults() {
-//   // Determine the result message based on the number of correct answers
-//   let resultMessage = '';
-//   if (correctAnswers === 3) {
-//     resultMessage = "Excellent! 💃🏽💃🏽💃🏽";
-//   } else if (correctAnswers === 2) {
-//     resultMessage = "Very Good! 👍🏽👍🏽";
-//   } else if (correctAnswers === 1) {
-//     resultMessage = "More room for improvement! Keep trying! 💪🏽💪🏽";
-//   } else {
-//     resultMessage = "Game Over! You didn't get any words correct 😭😭😭.";
-//   }
-  
-//   // Display the result message with the correct answer count
-//   alert(`Game Over! You got ${correctAnswers} out of ${images.length} correct. ${resultMessage}`);
-
-//   // Reload the page after the alert is closed
-//   location.reload();
-// }
-
-
-// Function to handle the "Get Started" button click
-
+// function to display result
 function showResults() {
   // Determine the result message based on the number of correct answers
    let resultMessage = '';
   
-   if (correctAnswers === 5) {
+   if (correctAnswers >= 4) {
      resultMessage = "Excellent! 💃🏽💃🏽💃🏽";
    } else if (correctAnswers === 3) {
      resultMessage = "Very Good! 👍🏽👍🏽";
@@ -229,6 +207,7 @@ function showResults() {
   });
 }
 
+// Function to handle the "Get Started" button click
 document.getElementById('get-started-btn').addEventListener('click', function() {
   // Show confirmation dialog
   const userConfirmed = confirm('Are you sure you want to start the game?');
