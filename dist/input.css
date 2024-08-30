@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+.alphabet-button {
+  width: 2em;
+  height: 2em;
+  background-color: #ffffff;
+  border: 2px solid #4682b4;
+  border-radius: 0.3em;
+  color: #4682b4;
+  cursor: pointer;
+}
+
+.alphabet-button:hover {
+  background-color: #5a9bd4;
+}
+
+.incorrect {
+  color: red;
+}
+
+.delete-button {
+  display: inline-flex; 
+  align-items: center; 
+  justify-content: center;
+  text-decoration: none;
+  color: inherit; 
+  background: #ffffff; 
+  border: 2px solid #4682b4; 
+  border-radius: 5px;
+  padding-left: 8px;
+  padding-right: 8px;
+  cursor: pointer; 
+}
+
+.delete-button:hover {
+  background-color: #ebe9e9;
+}
+
+
+
+

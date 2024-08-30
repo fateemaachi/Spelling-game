@@ -1,0 +1,175 @@
+#letter-container {
+  margin: 2em 0 3em 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+.letters {
+  width: 2em;
+  height: 2em;
+  background-color: #ffffff;
+  border: 2px solid #8254fd;
+  border-radius: 0.3em;
+  color: #8254fd;
+  cursor: pointer;
+}
+
+// Array of images to be displayed and their corresponding words to be spelled
+let images = [
+  'https://img.freepik.com/free-vector/flat-design-halloween-bat-concept_23-2148649699.jpg',
+  'https://img.freepik.com/free-vector/cute-cat-cartoon-characters-illustrations-set-cats-with-heart-shaped-noses-happy-fluffy-kittens-smiling-orange-grey-kitties-sitting-white_74855-20523.jpg',
+  'https://img.freepik.com/free-vector/beagle-dog-cartoon-white-background_1308-68249.jpg'
+];
+let words = ['BAT', 'CAT', 'DOG']; // Corresponding words
+let currentIndex = 0;
+let currentWord = '';
+let timerInterval, imageTimeout;
+let correctAnswers = 0; // Track the number of correct answers
+let gotCorrectAnswer = false; // Track if the user got at least one correct answer
+
+function startGame() {
+  generateAlphabetButtons();
+  showImage();
+}
+
+function generateAlphabetButtons() {
+  const alphabetContainer = document.querySelector('.alphabet-buttons');
+  alphabetContainer.innerHTML = ''; // Clear any existing buttons
+
+  // Generate buttons for A-Z
+  for (let i = 65; i <= 90; i++) { // ASCII codes for A-Z
+      let letter = String.fromCharCode(i);
+      let button = document.createElement('button');
+      button.classList.add('alphabet-button');
+      button.innerText = letter;
+      button.addEventListener('click', () => clickAlphabet(letter));
+      alphabetContainer.appendChild(button);
+  }
+
+  // Create a delete button
+  let deleteButton = document.createElement('button');
+  deleteButton.innerHTML = '<i class="fa-solid fa-delete-left custom-icon"></i>';
+  deleteButton.classList.add('delete-button');
+  deleteButton.addEventListener('click', deleteLastLetter);
+  alphabetContainer.appendChild(deleteButton);
+}
+
+function showImage() {
+  clearTimeout(imageTimeout); // Clear any previous timeouts
+  clearInterval(timerInterval); // Clear any previous intervals
+
+  let image = images[currentIndex];
+  let imageElement = document.getElementById('image-display');
+  imageElement.src = image;
+  currentWord = '';
+  document.getElementById('spelling-box').innerHTML = ''; // Use innerHTML to apply styles
+  
+  startTimer(); // Start the timer again for the new image
+}
+
+function startTimer() {
+  let timeLeft = 60; // 60 seconds
+  document.getElementById('timer').innerText = timeLeft;
+  
+  timerInterval = setInterval(() => {
+      timeLeft--;
+      if (timeLeft >= 0) {
+          document.getElementById('timer').innerText = timeLeft;
+      } else {
+          clearInterval(timerInterval);
+          nextImage();
+      }
+  }, 1000);
+}
+
+function clickAlphabet(letter) {
+  currentWord += letter;
+  updateSpellingBox();
+
+  if (currentWord === words[currentIndex]) {
+      clearTimeout(imageTimeout);
+      clearInterval(timerInterval);
+      gotCorrectAnswer = true; // User got the correct answer
+      correctAnswers++; // Increment the correct answer count
+      // Move to the next image after 5 seconds
+      setTimeout(nextImage, 1000);
+  }
+}
+
+
+function updateSpellingBox() {
+  // Update the spelling box with colored letters
+  let spellingBox = document.getElementById('spelling-box');
+  let correctWord = words[currentIndex];
+  let displayWord = '';
+
+  for (let i = 0; i < currentWord.length; i++) {
+      let letter = currentWord[i];
+      if (i < correctWord.length && letter === correctWord[i]) {
+          displayWord += `<span>${letter}</span>`; // Correct letter
+      } else {
+          displayWord += `<span class="incorrect">${letter}</span>`; // Incorrect letter
+      }
+  }
+
+  spellingBox.innerHTML = displayWord;
+}
+
+
+function deleteLastLetter() {
+  // Remove the last letter from the current word
+  currentWord = currentWord.slice(0, -1);
+  updateSpellingBox();
+}
+
+function nextImage() {
+  currentIndex++;
+  if (currentIndex < images.length) {
+      showImage(); // Show the next image and restart the timer
+  } else {
+      if (gotCorrectAnswer) {
+          // Last image case, if the answer was correct, show results after 5 seconds
+          setTimeout(showResults, 1000);
+      } else {
+          // Last image case, if the answer was incorrect, start the timer to show results after 60 seconds
+          // startTimer();
+          imageTimeout = setTimeout(showResults, 1000); // Wait 10 seconds before showing results
+      }
+  }
+}
+
+function showResults() {
+  // Show result based on whether the user got at least one answer correct
+  if (gotCorrectAnswer) {
+      alert(`Game Over! You got ${correctAnswers} out of ${images.length} correct 💃🏽💃🏽💃🏽.`);
+  } else {
+      alert("Game Over! You didn't get any words correct 😭😭😭.");
+  }
+  // Reload the page after the alert is closed
+  location.reload();
+}
+
+// Function to handle the "Get Started" button click
+document.getElementById('get-started-btn').addEventListener('click', function() {
+  // Show confirmation dialog
+  const userConfirmed = confirm('Are you sure you want to start the game?');
+  
+  if (userConfirmed) {
+    // Hide the "Get Started" button and show the loader
+    document.getElementById('get-started-btn').style.display = 'none';
+    document.getElementById('loader').style.display = 'block';
+    
+    // Hide the loader and show the game container after 3 seconds
+    setTimeout(() => {
+      document.getElementById('loader').style.display = 'none'; // Hide the loader
+      document.querySelector('.container').style.display = 'block'; // Show the game container
+      startGame(); // Start the game
+    }, 3000);
+  } else {
+    // User clicked "Cancel", re-display the "Get Started" button
+    document.getElementById('get-started-btn').style.display = 'block';
+  }
+});
+
+

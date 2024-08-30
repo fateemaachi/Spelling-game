@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../dist/input.css" />
+    <link rel="stylesheet" href="../src/output.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Dancing+Script:wght@400..700&family=Grey+Qo&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playwrite+DE+Grund:wght@100..400&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/eba01fdb8d.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Spelling game</title>
+  </head>
+  <body
+    class="font-montserrat bg-[#f0f8ff] flex justify-center items-center mx-0 bg-cover bg-no-repeat bg-center bg-blend-darken min-h-screen relative"
+    style="
+      background-image: url('https://ideogram.ai/assets/image/lossless/response/Lj4KlknhSD2T1FtAHi1Vvw');
+    "
+  >
+    <!-- Dark Overlay -->
+    <div
+      class="absolute z-0 inset-0 bg-[#00000080] flex flex-col justify-center items-center gap-5 mx-0"
+    >
+      <h2 class="title inline-block font-dancing font-extrabold text-7xl md:text-9xl text-white mb-5">Tender years</h2>
+      <p class="sub-t inline-block font-dancing font-bold text-5xl md:text-7xl text-white">😜 Learn to spell 🤪</p>
+      <button
+        class="px-5 py-2.5 mt-5 bg-gradient-to-r from-teal-400 to-blue-500 text-[18px] text-[#fff] border-none rounded-md cursor-pointer transition-all duration-300 hover:from-pink-500 hover:to-orange-500 outline outline-offset-4 outline-2 outline-pink-500 hover:outline hover:outline-offset-4 hover:outline-cyan-500"
+        id="get-started-btn"
+      >
+        Get Started
+      </button>
+    </div>
+   
+
+    <!-- Loader -->
+    <div
+      class="font-grey font-bold text-9xl text-white tracking-widest hidden absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 animate-pulse"
+      id="loader"
+    >
+      Loading...
+    </div>
+
+    <!--main-->
+    <div
+      class="container hidden text-center max-w-[450px] md:max-w-[500px] w-full p-5 bg-white border-solid  border-2 border-white shadow-xl rounded-2xl mt-16 mb-16 relative z-10"
+    >
+      <h4 class="text-2xl mb-5 text-[#333]">Spell the animal...</h4>
+      <!-- Image Display -->
+      <div
+        id="image-container"
+        class="image-display w-full bg-[#e0e0e0] bg-contain bg-no-repeat bg-center mb-5 rounded-md"
+      >
+        <img
+          class="w-[70%] h-[300px] m-auto p-2.5"
+          id="image-display"
+          alt="image"
+        />
+      </div>
+
+      <!-- Timer Display -->
+      <div class="timer text-2xl mb-5 text-[#333]">
+        Time Left: <span id="timer">60</span> seconds
+      </div>
+
+      <!-- Spelling Box -->
+      <div
+        id="spelling-box"
+        class="spelling-box flex justify-center mb-5 text-2xl tracking-[10px] min-h-14"
+      ></div>
+
+      <!-- Alphabet Buttons -->
+      <div
+        class="alphabet-buttons mt-8 mb-12 flex flex-wrap justify-center gap-2.5"
+      ></div>
+    </div>
+
+    <script src="../dist/script.js"></script>
+  </body>
+</html>
